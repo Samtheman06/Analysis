@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Predictions</title>
+      <script src="js/page.js"></script>
+      <script src="js/fullrun.js"></script>
+
+    </head>
+    <body>
+    <main>
+        <script>conversion()</script>
+        <header>
+          <center><h1>Analysis</h1></center>
+        </header>
+
+      <div class="Before" id="Before">
+        <h2>Stock values</h2>
+        <span>Copy all the values from Yahoo finance (Adj. Close) daily:</span> &nbsp <input type="text" id="yahoo"><br>
+        <span>Copy all the values from Yahoo finance (Adj. Close) weekly:</span> &nbsp <input type="text" id="yahoo_week">
+        <h2>Predictions</h2>
+        <h3>Day 1</h3>
+        <span>Write Max close value change (%):</span> &nbsp <input type="text" id="maxinc">
+        <br><br>
+        <span>Write Min close value change (%):</span> &nbsp <input type="text" id="mininc">
+        <br><br>
+        <h3>Day 2</h3>
+        <span>Write Max close value change (%):</span> &nbsp <input type="text" id="maxinc2">
+        <br><br>
+        <span>Write Min close value change (%):</span> &nbsp <input type="text" id="mininc2">
+
+        <br>
+
+        <h3>Week 1</h3>
+        <span>Write Max close value change (%):</span> &nbsp <input type="text" id="2maxinc">
+        <br><br>
+        <span>Write Min close value change (%):</span> &nbsp <input type="text" id="2mininc">
+        <br><br>
+        <h3>Week 2</h3>
+        <span>Write Max close value change (%):</span> &nbsp <input type="text" id="2maxinc2">
+        <br><br>
+        <span>Write Min close value change (%):</span> &nbsp <input type="text" id="2mininc2">
+
+
+        <br><br>
+        <button type="button" onclick="run(); run2();">Submit</button>
+        <br><br><br type="button" onclick="console_log()">Console.log</button>
+        <button>
+      </div>
+
+      <div class="Answer" id="Answer">
+        <center><h2>Answer</h2></center>
+
+        <h3>Day results</h3>
+        <span>Day 1 range:</span><span id="range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Day 2 range:</span><span id="range2"></span>
+        <br><br>
+        <span>The number of same 2 days given before / the total number of days: </span><span id="answer"></span>
+        <br><br>
+        <span>Down less than -1%: </span><span id="a">&nbsp</span> <br>
+        <span>Down beetween -1% and -0.5%: </span>&nbsp<span id="b"></span> <br>
+        <span>Down beetween -0.5% and 0%: </span>&nbsp<span id="c"></span>  <br>
+        <span>Up beetween 0% and 0.5%: </span>&nbsp<span id="d"></span> <br>
+        <span>Up beetween 0.5% and 1%: </span>&nbsp<span id="e"></span> <br>
+        <span>Up more than 1%: </span>&nbsp<span id="f"></span>
+        <br><br>
+        <span>Next day prediction:</span><span id="prediction"></span>
+        <br><br>
+        <span>Average change (%) per day:</span><span id="average"></span>
+        <br><br>
+        <span>Number of days that are in the day 1 range:</span><span id="day1"></span>
+        <br>
+        <span>Number of days that are in the day 2 range:</span><span id="day2"></span>
+
+        <br><br><br>
+
+        <h3>Week results</h3>
+        <span>Week 1 range:</span><span id="2range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Week 2 range:</span><span id="2range2"></span>
+        <br><br>
+        <span>The number of same 2 weeks given before / the total number of weeks: </span><span id="2answer"></span>
+        <br><br>
+        <span>Down less than -1%: </span><span id="2a">&nbsp</span> <br>
+        <span>Down beetween -1% and -0.5%: </span>&nbsp<span id="2b"></span> <br>
+        <span>Down beetween -0.5% and 0%: </span>&nbsp<span id="2c"></span>  <br>
+        <span>Up beetween 0% and 0.5%: </span>&nbsp<span id="2d"></span> <br>
+        <span>Up beetween 0.5% and 1%: </span>&nbsp<span id="2e"></span> <br>
+        <span>Up more than 1%: </span>&nbsp<span id="2f"></span>
+        <br><br>
+        <span>Next week prediction:</span><span id="2prediction"></span>
+        <br><br>
+        <span>Average change (%) per week:</span><span id="2average"></span>
+        <br><br>
+        <span>Number of weeks that are in the week 1 range:</span><span id="week1"></span>
+        <br>
+        <span>Number of weeks that are in the week 2 range:</span><span id="week2"></span>
+      </div>
+
+    </main>
+</body>
+
+  </html>
