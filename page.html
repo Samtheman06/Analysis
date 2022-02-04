@@ -3,39 +3,41 @@
     <head>
       <title>Predictions</title>
       <script src="js/page.js"></script>
-      <script src="js/fullrun.js"></script>
 
     </head>
     <body>
     <main>
-        <script>conversion()</script>
         <header>
           <center><h1>Analysis</h1></center>
         </header>
+
+        <br><br>
+      <center><p> This is a stock analysis tool that uses all of the past data of a stock to <br>
+            determine it's caracteristics and allow better understanding of it's past</p></center>
 
       <div class="Before" id="Before">
         <h2>Stock values</h2>
         <span>Copy all the values from Yahoo finance (Adj. Close) daily:</span> &nbsp <input type="text" id="yahoo"><br>
         <span>Copy all the values from Yahoo finance (Adj. Close) weekly:</span> &nbsp <input type="text" id="yahoo_week">
         <h2>Predictions</h2>
-        <h3>Day 1</h3>
-        <span>Write Max close value change (%):</span> &nbsp <input type="text" id="maxinc">
+        <h3>Day 1 (Yesterday)</h3>
+        <span>Write Max close value change (%)*:</span> &nbsp <input type="text" id="maxinc">
         <br><br>
-        <span>Write Min close value change (%):</span> &nbsp <input type="text" id="mininc">
+        <span>Write Min close value change (%)*:</span> &nbsp <input type="text" id="mininc">
         <br><br>
-        <h3>Day 2</h3>
+        <h3>Day 2 (Today)</h3>
         <span>Write Max close value change (%):</span> &nbsp <input type="text" id="maxinc2">
         <br><br>
         <span>Write Min close value change (%):</span> &nbsp <input type="text" id="mininc2">
 
         <br>
 
-        <h3>Week 1</h3>
+        <h3>Week 1  (Last Week)</h3>
         <span>Write Max close value change (%):</span> &nbsp <input type="text" id="2maxinc">
         <br><br>
         <span>Write Min close value change (%):</span> &nbsp <input type="text" id="2mininc">
         <br><br>
-        <h3>Week 2</h3>
+        <h3>Week 2 (This week)</h3>
         <span>Write Max close value change (%):</span> &nbsp <input type="text" id="2maxinc2">
         <br><br>
         <span>Write Min close value change (%):</span> &nbsp <input type="text" id="2mininc2">
@@ -43,56 +45,62 @@
 
         <br><br>
         <button type="button" onclick="run(); run2();">Submit</button>
-        <br><br><br type="button" onclick="console_log()">Console.log</button>
-        <button>
+
+        <br><br><br>
+        <p>* The Max close value change and Min value change imply the range
+          of percentages that you want to analyse. So for example, if the company was
+          up 2% at close this week, then you could write Max 2,3% and Min 1,7%. This will
+          compare the data with all close values and will analyse many
+          things, such as, on average, what was the value change (%) the week after
+          two weeks similar to these ones.</p>
       </div>
 
       <div class="Answer" id="Answer">
         <center><h2>Answer</h2></center>
 
-        <h3>Day results</h3>
-        <span>Day 1 range:</span><span id="range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Day 2 range:</span><span id="range2"></span>
+        <h3>Daily results</h3>
+        <span>Day 1 (Yesterday) range:</span><span id="range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Day 2 (today) range:</span><span id="range2"></span>
         <br><br>
-        <span>The number of same 2 days given before / the total number of days: </span><span id="answer"></span>
+        <span>The number of times there were two consecutive days within the day 1 and day 2 range / the total number of days: </span><span id="answer"></span>
         <br><br>
-        <span>Down less than -1%: </span><span id="a">&nbsp</span> <br>
-        <span>Down beetween -1% and -0.5%: </span>&nbsp<span id="b"></span> <br>
-        <span>Down beetween -0.5% and 0%: </span>&nbsp<span id="c"></span>  <br>
-        <span>Up beetween 0% and 0.5%: </span>&nbsp<span id="d"></span> <br>
-        <span>Up beetween 0.5% and 1%: </span>&nbsp<span id="e"></span> <br>
-        <span>Up more than 1%: </span>&nbsp<span id="f"></span>
+        <span>Number of days that were down more than -1%: </span><span id="a">&nbsp</span> <br>
+        <span>Number of days that were down beetween -1% and -0.5%: </span>&nbsp<span id="b"></span> <br>
+        <span>Number of days that were down beetween -0.5% and 0%: </span>&nbsp<span id="c"></span>  <br>
+        <span>Number of days that were up beetween 0% and 0.5%: </span>&nbsp<span id="d"></span> <br>
+        <span>Number of days that were up beetween 0.5% and 1%: </span>&nbsp<span id="e"></span> <br>
+        <span>Number of days that were up more than 1%: </span>&nbsp<span id="f"></span>
         <br><br>
-        <span>Next day prediction:</span><span id="prediction"></span>
+        <span>Next day prediction (average):</span><span id="prediction"></span>
         <br><br>
         <span>Average change (%) per day:</span><span id="average"></span>
         <br><br>
-        <span>Number of days that are in the day 1 range:</span><span id="day1"></span>
+        <span>Number of days that are within the day 1 range:</span><span id="day1"></span>
         <br>
-        <span>Number of days that are in the day 2 range:</span><span id="day2"></span>
+        <span>Number of days that are within the day 2 range:</span><span id="day2"></span>
 
         <br><br><br>
 
-        <h3>Week results</h3>
-        <span>Week 1 range:</span><span id="2range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Week 2 range:</span><span id="2range2"></span>
+        <h3>Weekly results</h3>
+        <span>Week 1 (last week) range:</span><span id="2range1"></span> &nbsp&nbsp<span>| &nbsp &nbsp Week 2 (this week) range:</span><span id="2range2"></span>
         <br><br>
-        <span>The number of same 2 weeks given before / the total number of weeks: </span><span id="2answer"></span>
+        <span>The number of times there were two consecutive weeks within the week 1 and week 2 range / the total number of weeks: </span><span id="2answer"></span>
         <br><br>
-        <span>Down less than -1%: </span><span id="2a">&nbsp</span> <br>
-        <span>Down beetween -1% and -0.5%: </span>&nbsp<span id="2b"></span> <br>
-        <span>Down beetween -0.5% and 0%: </span>&nbsp<span id="2c"></span>  <br>
-        <span>Up beetween 0% and 0.5%: </span>&nbsp<span id="2d"></span> <br>
-        <span>Up beetween 0.5% and 1%: </span>&nbsp<span id="2e"></span> <br>
-        <span>Up more than 1%: </span>&nbsp<span id="2f"></span>
+        <span>Number of weeks that were down more than -1%: </span><span id="2a">&nbsp</span> <br>
+        <span>Number of weeks that were down beetween -1% and -0.5%: </span>&nbsp<span id="2b"></span> <br>
+        <span>Number of weeks that were down beetween -0.5% and 0%: </span>&nbsp<span id="2c"></span>  <br>
+        <span>Number of weeks that were up beetween 0% and 0.5%: </span>&nbsp<span id="2d"></span> <br>
+        <span>Number of weeks that were up beetween 0.5% and 1%: </span>&nbsp<span id="2e"></span> <br>
+        <span>Number of weeks that were up more than 1%: </span>&nbsp<span id="2f"></span>
         <br><br>
-        <span>Next week prediction:</span><span id="2prediction"></span>
+        <span>Next week prediction (average):</span><span id="2prediction"></span>
         <br><br>
         <span>Average change (%) per week:</span><span id="2average"></span>
         <br><br>
-        <span>Number of weeks that are in the week 1 range:</span><span id="week1"></span>
+        <span>Number of weeks that are within the week 1 range:</span><span id="week1"></span>
         <br>
-        <span>Number of weeks that are in the week 2 range:</span><span id="week2"></span>
+        <span>Number of weeks that are within the week 2 range:</span><span id="week2"></span>
       </div>
-
+      <script>conversion()</script>
     </main>
 </body>
 
